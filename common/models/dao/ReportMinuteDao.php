@@ -17,7 +17,7 @@ class ReportMinuteDao extends ReportMinute
 
     public static function getByDate($startDate, $endDate)
     {
-        $sql = " select * from report_minute where `date` >= '$startDate' and `date` <= '$endDate' order by  `date`  desc ";
+        $sql = " select * from report_minute where `date` >= '$startDate' and `date` <= '$endDate' order by  `date`  ASC ";
         return \Yii::$app->db->createCommand($sql)->queryAll();
     }
 

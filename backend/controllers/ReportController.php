@@ -29,9 +29,19 @@ class ReportController extends BaseController
         $startDate = date("Y-m-d 00:00:00");
         $endDate = date("Y-m-d 23:59:59");
         $today = ReportMinuteDao::getByDate($startDate, $endDate);
+        $todayData = [];
+        foreach ($today as $value){
+            $todayData[] =$value['pv'];
+        }
+
         $startDate = date("Y-m-d 00:00:00", strtotime(" -1 days"));
         $endDate = date("Y-m-d 23:59:59", strtotime(" -1 days"));
         $yestoday = ReportMinuteDao::getByDate($startDate, $endDate);
+        $yesData = [];
+        foreach ($today as $value){
+            $yesData[] =$value['pv'];
+        }
+
         $this->success(['today' => $today, 'yestoday' =>$yestoday]);
     }
 
